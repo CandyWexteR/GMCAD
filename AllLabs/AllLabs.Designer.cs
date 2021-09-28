@@ -61,7 +61,9 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Lab1Button);
             this.Name = "AllLabs";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Геометрическое Моделирование в САПР";
+            this.Load += new System.EventHandler(this.AllLabs_Load);
             this.ResumeLayout(false);
         }
 

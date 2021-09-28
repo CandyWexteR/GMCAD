@@ -25,5 +25,11 @@ namespace AllLabs
         {
             Close();
         }
+
+        private void AllLabs_Load(object sender, EventArgs e)
+        {
+            MaximumSize = Size;
+            MinimumSize = Size;
+        }
     }
 }
