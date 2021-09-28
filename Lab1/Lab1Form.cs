@@ -55,9 +55,8 @@ namespace Lab1
 
         private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (_image == null)
+            if (_image.IsNull())
             {
-                MessageBox.Show("Сначала загрузите изображение!");
                 return;
             }
             
@@ -66,9 +65,8 @@ namespace Lab1
 
         private void сохранитьКакToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (_image == null)
+            if (_image.IsNull())
             {
-                MessageBox.Show("Сначала загрузите изображение!");
                 return;
             }
             
@@ -78,6 +76,26 @@ namespace Lab1
             if (saveDialog.ShowDialog() != DialogResult.OK)
                 return;
             _image.Save(saveDialog.FileName);
+        }
+
+        private void поЧасовойToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (_image.IsNull())
+            {
+                return;
+            }
+            
+            _image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+        }
+
+        private void противЧасовойToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (_image.IsNull())
+            {
+                return;
+            }
+            
+            _image.RotateFlip(RotateFlipType.Rotate270FlipNone);
         }
     }
 }

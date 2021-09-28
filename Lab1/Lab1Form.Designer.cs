@@ -122,12 +122,14 @@
             this.поЧасовойToolStripMenuItem.Name = "поЧасовойToolStripMenuItem";
             this.поЧасовойToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.поЧасовойToolStripMenuItem.Text = "По часовой";
+            this.поЧасовойToolStripMenuItem.Click += new System.EventHandler(this.поЧасовойToolStripMenuItem_Click);
             // 
             // противЧасовойToolStripMenuItem
             // 
             this.противЧасовойToolStripMenuItem.Name = "противЧасовойToolStripMenuItem";
             this.противЧасовойToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.противЧасовойToolStripMenuItem.Text = "Против часовой";
+            this.противЧасовойToolStripMenuItem.Click += new System.EventHandler(this.противЧасовойToolStripMenuItem_Click);
             // 
             // Lab1Form
             // 
