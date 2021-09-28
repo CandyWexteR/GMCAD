@@ -7,7 +7,7 @@ namespace Lab1
     public partial class Lab1Form : Form
     {
         private Image _image;
-        private string pathToImage;
+        private string _pathToImage;
         
         public Lab1Form()
         {
@@ -24,7 +24,7 @@ namespace Lab1
             try
             {
                 _image = Image.FromFile(openDialog.FileName);
-                pathToImage = openDialog.FileName;
+                _pathToImage = openDialog.FileName;
             }
             catch (OutOfMemoryException)
             {
@@ -60,7 +60,7 @@ namespace Lab1
                 return;
             }
             
-            _image.Save(pathToImage);
+            _image.Save(_pathToImage);
         }
 
         private void сохранитьКакToolStripMenuItem_Click(object sender, EventArgs e)
