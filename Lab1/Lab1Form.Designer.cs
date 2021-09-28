@@ -41,6 +41,9 @@
             this.повернутьНа90ГрадусовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.поЧасовойToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.противЧасовойToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отразитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.поВертикалиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.поГоризонталиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,7 +106,7 @@
             // 
             this.EditToolStrip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.EditToolStrip.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.EditToolStrip.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {this.повернутьНа90ГрадусовToolStripMenuItem});
+            this.EditToolStrip.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {this.повернутьНа90ГрадусовToolStripMenuItem, this.отразитьToolStripMenuItem});
             this.EditToolStrip.Image = ((System.Drawing.Image) (resources.GetObject("EditToolStrip.Image")));
             this.EditToolStrip.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.EditToolStrip.Name = "EditToolStrip";
@@ -131,6 +134,27 @@
             this.противЧасовойToolStripMenuItem.Text = "Против часовой";
             this.противЧасовойToolStripMenuItem.Click += new System.EventHandler(this.противЧасовойToolStripMenuItem_Click);
             // 
+            // отразитьToolStripMenuItem
+            // 
+            this.отразитьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {this.поВертикалиToolStripMenuItem, this.поГоризонталиToolStripMenuItem});
+            this.отразитьToolStripMenuItem.Name = "отразитьToolStripMenuItem";
+            this.отразитьToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
+            this.отразитьToolStripMenuItem.Text = "Отразить";
+            // 
+            // поВертикалиToolStripMenuItem
+            // 
+            this.поВертикалиToolStripMenuItem.Name = "поВертикалиToolStripMenuItem";
+            this.поВертикалиToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.поВертикалиToolStripMenuItem.Text = "По вертикали";
+            this.поВертикалиToolStripMenuItem.Click += new System.EventHandler(this.поВертикалиToolStripMenuItem_Click);
+            // 
+            // поГоризонталиToolStripMenuItem
+            // 
+            this.поГоризонталиToolStripMenuItem.Name = "поГоризонталиToolStripMenuItem";
+            this.поГоризонталиToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.поГоризонталиToolStripMenuItem.Text = "По горизонтали";
+            this.поГоризонталиToolStripMenuItem.Click += new System.EventHandler(this.поГоризонталиToolStripMenuItem_Click);
+            // 
             // Lab1Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -149,6 +173,10 @@
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.ToolStripMenuItem отразитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem поВертикалиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem поГоризонталиToolStripMenuItem;
 
         private System.Windows.Forms.ToolStripSplitButton FileToolStrip;
 

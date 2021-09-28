@@ -80,22 +80,32 @@ namespace Lab1
 
         private void поЧасовойToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (_image.IsNull())
-            {
-                return;
-            }
-            
-            _image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            RotateImage(RotateFlipType.Rotate90FlipNone);
         }
 
         private void противЧасовойToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RotateImage(RotateFlipType.Rotate270FlipNone);
+        }
+
+        private void поГоризонталиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RotateImage(RotateFlipType.RotateNoneFlipX);
+        }
+
+        private void поВертикалиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RotateImage(RotateFlipType.RotateNoneFlipY);
+        }
+
+        private void RotateImage(RotateFlipType type)
         {
             if (_image.IsNull())
             {
                 return;
             }
             
-            _image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+            _image.RotateFlip(type);
         }
     }
 }
