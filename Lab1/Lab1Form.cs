@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Lab1
@@ -13,6 +7,7 @@ namespace Lab1
     public partial class Lab1Form : Form
     {
         private Image _image;
+        private string pathToImage;
         
         public Lab1Form()
         {
@@ -21,7 +16,7 @@ namespace Lab1
 
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openDialog = new OpenFileDialog();
+            var openDialog = new OpenFileDialog();
             openDialog.Filter = "Файлы изображений|*.bmp;*.png;*.jpg";
             if (openDialog.ShowDialog() != DialogResult.OK)
                 return;
@@ -29,6 +24,7 @@ namespace Lab1
             try
             {
                 _image = Image.FromFile(openDialog.FileName);
+                pathToImage = openDialog.FileName;
             }
             catch (OutOfMemoryException)
             {
@@ -46,9 +42,42 @@ namespace Lab1
             ImagePanel.Size = Size;
         }
 
-        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void Lab1Form_Load(object sender, EventArgs e)
         {
-            throw new System.NotImplementedException();
+            MinimumSize = Size;
+            MaximumSize = Size;
+        }
+
+        private void закрытьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (_image == null)
+            {
+                MessageBox.Show("Сначала загрузите изображение!");
+                return;
+            }
+            
+            _image.Save(pathToImage);
+        }
+
+        private void сохранитьКакToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (_image == null)
+            {
+                MessageBox.Show("Сначала загрузите изображение!");
+                return;
+            }
+            
+            var saveDialog = new SaveFileDialog();
+            saveDialog.Filter = "JPG files (*.jpg)|*.jpg|JPEG files (*.jpeg)|*.jpeg|PNG files (*.png)|*.png|All files (*.*)|*.*";
+            saveDialog.FilterIndex = 2 ;
+            if (saveDialog.ShowDialog() != DialogResult.OK)
+                return;
+            _image.Save(saveDialog.FileName);
         }
     }
 }
