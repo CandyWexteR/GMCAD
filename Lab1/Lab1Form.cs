@@ -45,6 +45,8 @@ namespace Lab1
 
         private void Lab1Form_Load(object sender, EventArgs e)
         {
+            MaximumSize = Size;
+            MinimumSize = Size;
         }
 
         private void закрытьToolStripMenuItem_Click_1(object sender, EventArgs e)

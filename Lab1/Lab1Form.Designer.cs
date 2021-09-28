@@ -58,9 +58,9 @@
             // 
             // ImagePanel
             // 
-            this.ImagePanel.Location = new System.Drawing.Point(12, 52);
+            this.ImagePanel.Location = new System.Drawing.Point(0, 52);
             this.ImagePanel.Name = "ImagePanel";
-            this.ImagePanel.Size = new System.Drawing.Size(776, 386);
+            this.ImagePanel.Size = new System.Drawing.Size(834, 409);
             this.ImagePanel.TabIndex = 0;
             // 
             // menuStrip2
@@ -68,7 +68,7 @@
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.файлToolStripMenuItem1, this.редактироватьToolStripMenuItem1});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip2.Size = new System.Drawing.Size(834, 24);
             this.menuStrip2.TabIndex = 1;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -161,7 +161,7 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.toolStripButton5, this.toolStripButton6, this.toolStripButton7, this.toolStripButton1, this.toolStripButton2, this.toolStripButton3, this.toolStripButton4});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(834, 25);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -240,13 +240,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(834, 461);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.ImagePanel);
             this.Controls.Add(this.menuStrip2);
+            this.HelpButton = true;
             this.Location = new System.Drawing.Point(15, 15);
             this.Name = "Lab1Form";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.Text = "Лабораторная работа 1";
             this.Load += new System.EventHandler(this.Lab1Form_Load);
             this.Resize += new System.EventHandler(this.Lab1Form_Resize);
             this.menuStrip2.ResumeLayout(false);
