@@ -7,7 +7,9 @@ namespace Lab1
     public partial class Lab1Form : Form
     {
         private Image _image;
+        private Bitmap _sizedImage;
         private string _pathToImage;
+        private double _scale;
 
         public Lab1Form()
         {
@@ -32,21 +34,17 @@ namespace Lab1
                 return;
             }
 
-            ImagePanel.AutoScroll = true;
-            ImagePanel.AutoScrollMinSize = _image.Size;
-            ImagePanel.AutoSize = true;
-            ImagePanel.BackgroundImage = _image;
+            _sizedImage = new Bitmap(_image);
+            _scale = 1.0;
+            UpdateBackgroundImage();
         }
 
         private void Lab1Form_Resize(object sender, EventArgs e)
         {
-            ImagePanel.Size = Size;
         }
 
         private void Lab1Form_Load(object sender, EventArgs e)
         {
-            MaximumSize = Size;
-            MinimumSize = Size;
         }
 
         private void закрытьToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -61,7 +59,7 @@ namespace Lab1
                 return;
             }
 
-            _image.Save(_pathToImage);
+            _sizedImage.Save(_pathToImage);
         }
 
         private void сохранитьКакToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -77,13 +75,13 @@ namespace Lab1
             saveDialog.FilterIndex = 2;
             if (saveDialog.ShowDialog() != DialogResult.OK)
                 return;
-            _image.Save(saveDialog.FileName);
+            _sizedImage.Save(saveDialog.FileName);
+            _image = _sizedImage;
         }
 
         private void поЧасовойToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             RotateImage(RotateFlipType.Rotate90FlipNone);
-            ImagePanel.Size = _image.Size;
         }
 
         private void противЧасовойToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -109,8 +107,7 @@ namespace Lab1
             }
 
             _image.RotateFlip(type);
-            ImagePanel.Size = _image.Size;
-            ImagePanel.BackgroundImage = _image;
+            SetScale(1);
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -146,6 +143,123 @@ namespace Lab1
         private void toolStripButton7_Click(object sender, EventArgs e)
         {
             сохранитьКакToolStripMenuItem_Click_1(sender, e);
+        }
+
+        private void UpdateBackgroundImage()
+        {
+            Size = _sizedImage.Size;
+            ImagePanel.Size = _sizedImage.Size;
+            ImagePanel.BackgroundImage = _sizedImage;
+        }
+
+        /// <summary>
+        /// Изменение машстаба
+        /// </summary>
+        /// <param name="multiplier">Мноижитель изменения масштаба</param>
+        private void SetScale(double multiplier)
+        {
+            if (_image.IsNull())
+            {
+                return;
+            }
+
+            _scale = _scale * multiplier;
+            _sizedImage = new Bitmap(_image,
+                new Size((int) (_image.Width * _scale), (int) (_image.Width * _scale)));
+            UpdateBackgroundImage();
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            if (_image.IsNull())
+            {
+                return;
+            }
+
+            SetScale(1.25);
+            UpdateBackgroundImage();
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            if (_image.IsNull())
+            {
+                return;
+            }
+
+            SetScale(1.5);
+            UpdateBackgroundImage();
+        }
+
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            if (_image.IsNull())
+            {
+                return;
+            }
+
+            SetScale(1.75);
+            UpdateBackgroundImage();
+        }
+
+        private void вернутьИсходныйМасштабToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (_image.IsNull())
+            {
+                return;
+            }
+
+            _sizedImage = new Bitmap(_image);
+            _scale = 1.0;
+            UpdateBackgroundImage();
+        }
+
+        private void toolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+            if (_image.IsNull())
+            {
+                return;
+            }
+
+            SetScale(0.75);
+            UpdateBackgroundImage();
+        }
+
+        private void toolStripMenuItem7_Click(object sender, EventArgs e)
+        {
+            if (_image.IsNull())
+            {
+                return;
+            }
+
+            SetScale(0.5);
+            UpdateBackgroundImage();
+        }
+
+        private void toolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            if (_image.IsNull())
+            {
+                return;
+            }
+
+            SetScale(0.25);
+            UpdateBackgroundImage();
+        }
+
+        private void toolStripButton8_Click(object sender, EventArgs e)
+        {
+            toolStripMenuItem2_Click(sender, e);
+        }
+
+        private void toolStripButton9_Click(object sender, EventArgs e)
+        {
+            toolStripMenuItem6_Click(sender, e);
+        }
+
+        private void toolStripButton10_Click(object sender, EventArgs e)
+        {
+            вернутьИсходныйМасштабToolStripMenuItem_Click(sender, e);
         }
     }
 }
