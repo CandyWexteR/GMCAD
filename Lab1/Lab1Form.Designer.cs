@@ -30,7 +30,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Lab1Form));
-            this.ImagePanel = new System.Windows.Forms.Panel();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,18 +64,11 @@
             this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton11 = new System.Windows.Forms.ToolStripButton();
+            this.ImagePictureBox = new System.Windows.Forms.PictureBox();
             this.menuStrip2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize) (this.ImagePictureBox)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ImagePanel
-            // 
-            this.ImagePanel.Location = new System.Drawing.Point(0, 52);
-            this.ImagePanel.Name = "ImagePanel";
-            this.ImagePanel.Size = new System.Drawing.Size(834, 409);
-            this.ImagePanel.TabIndex = 0;
-            this.ImagePanel.Scroll += new System.Windows.Forms.ScrollEventHandler(this.ImagePanel_Scroll);
             // 
             // menuStrip2
             // 
@@ -245,7 +237,7 @@
             // toolStrip1
             // 
             this.toolStrip1.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.toolStripButton5, this.toolStripButton6, this.toolStripButton7, this.toolStripButton1, this.toolStripButton2, this.toolStripButton3, this.toolStripButton4, this.toolStripButton8, this.toolStripButton9, this.toolStripButton10, this.toolStripButton11});
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.toolStripButton5, this.toolStripButton6, this.toolStripButton7, this.toolStripButton1, this.toolStripButton2, this.toolStripButton3, this.toolStripButton4, this.toolStripButton8, this.toolStripButton9, this.toolStripButton10});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(834, 25);
@@ -353,27 +345,29 @@
             this.toolStripButton10.Text = "Вернуть исходный масштаб";
             this.toolStripButton10.Click += new System.EventHandler(this.toolStripButton10_Click);
             // 
-            // toolStripButton11
+            // ImagePictureBox
             // 
-            this.toolStripButton11.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton11.Image = ((System.Drawing.Image) (resources.GetObject("toolStripButton11.Image")));
-            this.toolStripButton11.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton11.Name = "toolStripButton11";
-            this.toolStripButton11.Size = new System.Drawing.Size(97, 22);
-            this.toolStripButton11.Text = "ShowPictureBox";
-            this.toolStripButton11.Click += new System.EventHandler(this.toolStripButton11_Click);
+            this.ImagePictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ImagePictureBox.Location = new System.Drawing.Point(0, 49);
+            this.ImagePictureBox.Name = "ImagePictureBox";
+            this.ImagePictureBox.Size = new System.Drawing.Size(834, 412);
+            this.ImagePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ImagePictureBox.TabIndex = 3;
+            this.ImagePictureBox.TabStop = false;
             // 
             // Lab1Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(834, 461);
+            this.Controls.Add(this.ImagePictureBox);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.ImagePanel);
             this.Controls.Add(this.menuStrip2);
             this.HelpButton = true;
             this.Location = new System.Drawing.Point(15, 15);
+            this.MinimumSize = new System.Drawing.Size(850, 500);
             this.Name = "Lab1Form";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Лабораторная работа 1";
@@ -383,11 +377,12 @@
             this.menuStrip2.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize) (this.ImagePictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
 
-        private System.Windows.Forms.ToolStripButton toolStripButton11;
+        private System.Windows.Forms.PictureBox ImagePictureBox;
 
         private System.Windows.Forms.ToolStripButton toolStripButton10;
         private System.Windows.Forms.ToolStripMenuItem вернутьИсходныйМасштабToolStripMenuItem;
@@ -441,8 +436,6 @@
 
         private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
         private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem;
-
-        private System.Windows.Forms.Panel ImagePanel;
 
         #endregion
     }

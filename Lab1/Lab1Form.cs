@@ -9,7 +9,6 @@ namespace Lab1
         private Image _image;
         private Bitmap _sizedImage;
         private string _pathToImage;
-        private PictureBox _box;
         private double _scale;
 
         public Lab1Form()
@@ -29,9 +28,6 @@ namespace Lab1
             {
                 _image = Image.FromFile(openDialog.FileName);
                 _pathToImage = openDialog.FileName;
-                _box = new PictureBox();
-
-                _box.Image = _image;
             }
             catch (OutOfMemoryException)
             {
@@ -41,18 +37,16 @@ namespace Lab1
 
             _sizedImage = new Bitmap(_image);
             _scale = 1.0;
-            UpdateBackgroundImage();
+            UpdateImage();
         }
 
         private void Lab1Form_Resize(object sender, EventArgs e)
         {
-            UpdateBackgroundImage();
+            UpdateImage();
         }
 
         private void Lab1Form_Load(object sender, EventArgs e)
         {
-            //Минимальный размер окна
-            MinimumSize = new Size(500, 300);
         }
 
         private void закрытьToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -153,28 +147,15 @@ namespace Lab1
             сохранитьКакToolStripMenuItem_Click_1(sender, e);
         }
 
-        private void UpdateBackgroundImage()
+        private void UpdateImage()
         {
-            var temppp = 0.98;
             if (_image == null)
             {
-                ImagePanel.Size = new Size((int) (Size.Width * temppp), (int) (Size.Height * temppp));
                 return;
             }
-
-            if(Size.Height > _sizedImage.Size.Height && Size.Width > _sizedImage.Size.Width || _image == null)
-                ImagePanel.Size = new Size(_sizedImage.Width, _sizedImage.Height);
-            if (Size.Height < _sizedImage.Size.Height && Size.Width > _sizedImage.Size.Width)
-                ImagePanel.Size = new Size(_sizedImage.Width, (int) (Size.Height * temppp));
-            if (Size.Height > _sizedImage.Size.Height && Size.Width < _sizedImage.Size.Width)
-                ImagePanel.Size = new Size((int) (Size.Width * temppp), _sizedImage.Height);
-            if (Size.Height < _sizedImage.Size.Height && Size.Width < _sizedImage.Size.Width)
-                ImagePanel.Size = new Size((int) (Size.Width * temppp), (int) (Size.Height * temppp));
             
-            ImagePanel.BackgroundImage = _sizedImage;
-
-            ImagePanel.AutoScroll = true;
-            ImagePanel.AutoScrollMinSize = _image.Size;
+            ImagePictureBox.Image = _sizedImage;
+            AutoScrollMinSize = _sizedImage.Size;
         }
 
         /// <summary>
@@ -188,11 +169,11 @@ namespace Lab1
                 return;
             }
 
-            _scale = _scale * multiplier;
+            _scale *= multiplier;
 
             _sizedImage = new Bitmap(_image,
                 new Size((int) (_image.Width * _scale), (int) (_image.Height * _scale)));
-            UpdateBackgroundImage();
+            UpdateImage();
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
@@ -203,7 +184,7 @@ namespace Lab1
             }
 
             SetScale(1.25);
-            UpdateBackgroundImage();
+            UpdateImage();
         }
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
@@ -214,7 +195,7 @@ namespace Lab1
             }
 
             SetScale(1.5);
-            UpdateBackgroundImage();
+            UpdateImage();
         }
 
         private void toolStripMenuItem4_Click(object sender, EventArgs e)
@@ -225,7 +206,7 @@ namespace Lab1
             }
 
             SetScale(1.75);
-            UpdateBackgroundImage();
+            UpdateImage();
         }
 
         private void вернутьИсходныйМасштабToolStripMenuItem_Click(object sender, EventArgs e)
@@ -237,7 +218,7 @@ namespace Lab1
 
             _sizedImage = new Bitmap(_image);
             _scale = 1.0;
-            UpdateBackgroundImage();
+            UpdateImage();
         }
 
         private void toolStripMenuItem6_Click(object sender, EventArgs e)
@@ -248,7 +229,7 @@ namespace Lab1
             }
 
             SetScale(0.75);
-            UpdateBackgroundImage();
+            UpdateImage();
         }
 
         private void toolStripMenuItem7_Click(object sender, EventArgs e)
@@ -259,7 +240,7 @@ namespace Lab1
             }
 
             SetScale(0.5);
-            UpdateBackgroundImage();
+            UpdateImage();
         }
 
         private void toolStripMenuItem5_Click(object sender, EventArgs e)
@@ -270,7 +251,7 @@ namespace Lab1
             }
 
             SetScale(0.25);
-            UpdateBackgroundImage();
+            UpdateImage();
         }
 
         private void toolStripButton8_Click(object sender, EventArgs e)
@@ -288,14 +269,9 @@ namespace Lab1
             вернутьИсходныйМасштабToolStripMenuItem_Click(sender, e);
         }
 
-        private void toolStripButton11_Click(object sender, EventArgs e)
+        private void ImagePictureBox_Scroll(object sender, ScrollEventArgs e)
         {
-            _box.Show();
-        }
-
-        private void ImagePanel_Scroll(object sender, ScrollEventArgs e)
-        {
-            UpdateBackgroundImage();
+            UpdateImage();
         }
     }
 }
