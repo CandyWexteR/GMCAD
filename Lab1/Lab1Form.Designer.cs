@@ -65,6 +65,7 @@
             this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton11 = new System.Windows.Forms.ToolStripButton();
             this.menuStrip2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -75,6 +76,7 @@
             this.ImagePanel.Name = "ImagePanel";
             this.ImagePanel.Size = new System.Drawing.Size(834, 409);
             this.ImagePanel.TabIndex = 0;
+            this.ImagePanel.Scroll += new System.Windows.Forms.ScrollEventHandler(this.ImagePanel_Scroll);
             // 
             // menuStrip2
             // 
@@ -243,7 +245,7 @@
             // toolStrip1
             // 
             this.toolStrip1.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.toolStripButton5, this.toolStripButton6, this.toolStripButton7, this.toolStripButton1, this.toolStripButton2, this.toolStripButton3, this.toolStripButton4, this.toolStripButton8, this.toolStripButton9, this.toolStripButton10});
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.toolStripButton5, this.toolStripButton6, this.toolStripButton7, this.toolStripButton1, this.toolStripButton2, this.toolStripButton3, this.toolStripButton4, this.toolStripButton8, this.toolStripButton9, this.toolStripButton10, this.toolStripButton11});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(834, 25);
@@ -351,6 +353,16 @@
             this.toolStripButton10.Text = "Вернуть исходный масштаб";
             this.toolStripButton10.Click += new System.EventHandler(this.toolStripButton10_Click);
             // 
+            // toolStripButton11
+            // 
+            this.toolStripButton11.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton11.Image = ((System.Drawing.Image) (resources.GetObject("toolStripButton11.Image")));
+            this.toolStripButton11.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton11.Name = "toolStripButton11";
+            this.toolStripButton11.Size = new System.Drawing.Size(97, 22);
+            this.toolStripButton11.Text = "ShowPictureBox";
+            this.toolStripButton11.Click += new System.EventHandler(this.toolStripButton11_Click);
+            // 
             // Lab1Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -374,6 +386,8 @@
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.ToolStripButton toolStripButton11;
 
         private System.Windows.Forms.ToolStripButton toolStripButton10;
         private System.Windows.Forms.ToolStripMenuItem вернутьИсходныйМасштабToolStripMenuItem;

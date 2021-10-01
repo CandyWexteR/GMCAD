@@ -9,6 +9,7 @@ namespace Lab1
         private Image _image;
         private Bitmap _sizedImage;
         private string _pathToImage;
+        private PictureBox _box;
         private double _scale;
 
         public Lab1Form()
@@ -23,10 +24,14 @@ namespace Lab1
             if (openDialog.ShowDialog() != DialogResult.OK)
                 return;
 
+
             try
             {
                 _image = Image.FromFile(openDialog.FileName);
                 _pathToImage = openDialog.FileName;
+                _box = new PictureBox();
+
+                _box.Image = _image;
             }
             catch (OutOfMemoryException)
             {
@@ -41,10 +46,13 @@ namespace Lab1
 
         private void Lab1Form_Resize(object sender, EventArgs e)
         {
+            UpdateBackgroundImage();
         }
 
         private void Lab1Form_Load(object sender, EventArgs e)
         {
+            //Минимальный размер окна
+            MinimumSize = new Size(500, 300);
         }
 
         private void закрытьToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -147,15 +155,32 @@ namespace Lab1
 
         private void UpdateBackgroundImage()
         {
-            Size = _sizedImage.Size;
-            ImagePanel.Size = _sizedImage.Size;
+            var temppp = 0.98;
+            if (_image == null)
+            {
+                ImagePanel.Size = new Size((int) (Size.Width * temppp), (int) (Size.Height * temppp));
+                return;
+            }
+
+            if(Size.Height > _sizedImage.Size.Height && Size.Width > _sizedImage.Size.Width || _image == null)
+                ImagePanel.Size = new Size(_sizedImage.Width, _sizedImage.Height);
+            if (Size.Height < _sizedImage.Size.Height && Size.Width > _sizedImage.Size.Width)
+                ImagePanel.Size = new Size(_sizedImage.Width, (int) (Size.Height * temppp));
+            if (Size.Height > _sizedImage.Size.Height && Size.Width < _sizedImage.Size.Width)
+                ImagePanel.Size = new Size((int) (Size.Width * temppp), _sizedImage.Height);
+            if (Size.Height < _sizedImage.Size.Height && Size.Width < _sizedImage.Size.Width)
+                ImagePanel.Size = new Size((int) (Size.Width * temppp), (int) (Size.Height * temppp));
+            
             ImagePanel.BackgroundImage = _sizedImage;
+
+            ImagePanel.AutoScroll = true;
+            ImagePanel.AutoScrollMinSize = _image.Size;
         }
 
         /// <summary>
         /// Изменение машстаба
         /// </summary>
-        /// <param name="multiplier">Мноижитель изменения масштаба</param>
+        /// <param name="multiplier">Множитель изменения масштаба</param>
         private void SetScale(double multiplier)
         {
             if (_image.IsNull())
@@ -164,8 +189,9 @@ namespace Lab1
             }
 
             _scale = _scale * multiplier;
+
             _sizedImage = new Bitmap(_image,
-                new Size((int) (_image.Width * _scale), (int) (_image.Width * _scale)));
+                new Size((int) (_image.Width * _scale), (int) (_image.Height * _scale)));
             UpdateBackgroundImage();
         }
 
@@ -260,6 +286,16 @@ namespace Lab1
         private void toolStripButton10_Click(object sender, EventArgs e)
         {
             вернутьИсходныйМасштабToolStripMenuItem_Click(sender, e);
+        }
+
+        private void toolStripButton11_Click(object sender, EventArgs e)
+        {
+            _box.Show();
+        }
+
+        private void ImagePanel_Scroll(object sender, ScrollEventArgs e)
+        {
+            UpdateBackgroundImage();
         }
     }
 }
