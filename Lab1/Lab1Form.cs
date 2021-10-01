@@ -6,9 +6,21 @@ namespace Lab1
 {
     public partial class Lab1Form : Form
     {
+        /// <summary>
+        /// Исходное изображение
+        /// </summary>
         private Image _image;
+        /// <summary>
+        /// Измененное изображение, построенное на основе <see cref="_image"/>
+        /// </summary>
         private Bitmap _sizedImage;
+        /// <summary>
+        /// Путь к исходному изображению
+        /// </summary>
         private string _pathToImage;
+        /// <summary>
+        /// Величина масштаба.
+        /// </summary>
         private double _scale;
 
         public Lab1Form()
@@ -16,13 +28,18 @@ namespace Lab1
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Функция открытия файла. Загружает данные в <see cref="_image"/> и обновляет изображение <see cref="_sizedImage"/>.
+        /// После этого наносит <see cref="_sizedImage"/> на <see cref="ImagePictureBox"/>.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var openDialog = new OpenFileDialog();
             openDialog.Filter = "Файлы изображений|*.bmp;*.png;*.jpg";
             if (openDialog.ShowDialog() != DialogResult.OK)
                 return;
-
 
             try
             {
@@ -101,6 +118,10 @@ namespace Lab1
             RotateImage(RotateFlipType.RotateNoneFlipY);
         }
 
+        /// <summary>
+        /// Функция поворота изображения. Поворачивает только исходное в памяти.
+        /// </summary>
+        /// <param name="type"></param>
         private void RotateImage(RotateFlipType type)
         {
             if (_image.IsNull())
@@ -147,6 +168,9 @@ namespace Lab1
             сохранитьКакToolStripMenuItem_Click_1(sender, e);
         }
 
+        /// <summary>
+        /// Нанесение изображения из <see cref="_sizedImage"/> на <see cref="ImagePictureBox"/>.
+        /// </summary>
         private void UpdateImage()
         {
             if (_image == null)
@@ -159,7 +183,7 @@ namespace Lab1
         }
 
         /// <summary>
-        /// Изменение машстаба
+        /// Изменение машстаба изображения. Меняется только изображение <see cref="_sizedImage"/>.
         /// </summary>
         /// <param name="multiplier">Множитель изменения масштаба</param>
         private void SetScale(double multiplier)
