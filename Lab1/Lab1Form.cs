@@ -179,7 +179,10 @@ namespace Lab1
             }
             
             ImagePictureBox.Image = _sizedImage;
-            AutoScrollMinSize = _sizedImage.Size;
+
+            ImagePanel.AutoScroll = true;
+            ImagePanel.AutoScrollMinSize = _sizedImage.Size;
+            ImagePanel.Invalidate();
         }
 
         /// <summary>

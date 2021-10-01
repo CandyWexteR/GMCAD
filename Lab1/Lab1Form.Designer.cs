@@ -64,9 +64,11 @@
             this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
+            this.ImagePanel = new System.Windows.Forms.Panel();
             this.ImagePictureBox = new System.Windows.Forms.PictureBox();
             this.menuStrip2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.ImagePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize) (this.ImagePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -261,7 +263,7 @@
             this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton6.Name = "toolStripButton6";
             this.toolStripButton6.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton6.Text = "toolStripButton6";
+            this.toolStripButton6.Text = "Сохранить";
             this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
             // toolStripButton7
@@ -271,7 +273,7 @@
             this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton7.Name = "toolStripButton7";
             this.toolStripButton7.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton7.Text = "toolStripButton7";
+            this.toolStripButton7.Text = "Добавлен";
             this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click);
             // 
             // toolStripButton1
@@ -345,24 +347,33 @@
             this.toolStripButton10.Text = "Вернуть исходный масштаб";
             this.toolStripButton10.Click += new System.EventHandler(this.toolStripButton10_Click);
             // 
+            // ImagePanel
+            // 
+            this.ImagePanel.AutoScroll = true;
+            this.ImagePanel.Controls.Add(this.ImagePictureBox);
+            this.ImagePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ImagePanel.Location = new System.Drawing.Point(0, 49);
+            this.ImagePanel.Name = "ImagePanel";
+            this.ImagePanel.Size = new System.Drawing.Size(834, 412);
+            this.ImagePanel.TabIndex = 3;
+            // 
             // ImagePictureBox
             // 
             this.ImagePictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ImagePictureBox.Location = new System.Drawing.Point(0, 49);
+            this.ImagePictureBox.Location = new System.Drawing.Point(0, 0);
             this.ImagePictureBox.Name = "ImagePictureBox";
             this.ImagePictureBox.Size = new System.Drawing.Size(834, 412);
             this.ImagePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.ImagePictureBox.TabIndex = 3;
+            this.ImagePictureBox.TabIndex = 0;
             this.ImagePictureBox.TabStop = false;
             // 
             // Lab1Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(834, 461);
-            this.Controls.Add(this.ImagePictureBox);
+            this.Controls.Add(this.ImagePanel);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip2);
             this.HelpButton = true;
@@ -377,12 +388,18 @@
             this.menuStrip2.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.ImagePanel.ResumeLayout(false);
+            this.ImagePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize) (this.ImagePictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
 
         private System.Windows.Forms.PictureBox ImagePictureBox;
+
+        private System.Windows.Forms.Panel ImagePanel;
+
+        private System.Windows.Forms.Panel panel1;
 
         private System.Windows.Forms.ToolStripButton toolStripButton10;
         private System.Windows.Forms.ToolStripMenuItem вернутьИсходныйМасштабToolStripMenuItem;
