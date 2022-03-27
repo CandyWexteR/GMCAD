@@ -12,6 +12,7 @@
         <FileAlignment>512</FileAlignment>
         <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
         <Deterministic>true</Deterministic>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -46,6 +47,18 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="BrightnessScaleForm.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="BrightnessScaleForm.Designer.cs">
+          <DependentUpon>BrightnessScaleForm.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Filters\Brightness.cs" />
+        <Compile Include="Filters\DotFilter.cs" />
+        <Compile Include="Filters\EmbossFilter.cs" />
+        <Compile Include="Filters\FilterBase.cs" />
+        <Compile Include="Filters\MatrixFilter.cs" />
+        <Compile Include="Filters\SharpFilter.cs" />
         <Compile Include="Lab2Form.cs">
           <SubType>Form</SubType>
         </Compile>
@@ -53,6 +66,9 @@
           <DependentUpon>Lab2Form.cs</DependentUpon>
         </Compile>
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <EmbeddedResource Include="BrightnessScaleForm.resx">
+          <DependentUpon>BrightnessScaleForm.cs</DependentUpon>
+        </EmbeddedResource>
         <EmbeddedResource Include="Lab2Form.resx">
           <DependentUpon>Lab2Form.cs</DependentUpon>
         </EmbeddedResource>

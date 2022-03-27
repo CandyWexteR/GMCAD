@@ -84,6 +84,10 @@
         <Project>{9bb6f434-d411-4fdc-846e-fccee854b15f}</Project>
         <Name>Lab1</Name>
       </ProjectReference>
+      <ProjectReference Include="..\Lab2\Lab2.csproj">
+        <Project>{8bf5608a-acf2-4ca4-882a-7a150ae820fb}</Project>
+        <Name>Lab2</Name>
+      </ProjectReference>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
