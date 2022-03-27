@@ -72,8 +72,10 @@ namespace Lab2
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.hScrollBar1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "BrightnessScaleForm";
-            this.Text = "BrightnessScaleForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Яркость";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BrightnessScaleForm_FormClosing);
             this.Load += new System.EventHandler(this.BrightnessScaleForm_Load);
             this.ResumeLayout(false);
